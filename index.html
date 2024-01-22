@@ -22,5 +22,12 @@
 	<script>
 		let tg = window.Telegram.WebApp;
 		tg.expand();
+		let ans = ('working')
+		let data = {
+			ans: ans
+		}		
+			
+		tg.sendData(JSON.stringify(data));
+	</script>
 </body>
 </html>
