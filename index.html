@@ -26,11 +26,10 @@
 		let tg = window.Telegram.WebApp;
 		let purchase = document.getElementById('buy');
 		tg.expand();
-		purchase.addEventListener('click', () => {
-			let ans = 'working'	
+		purchase.addEventListener('click', () => {	
 			tg.close();		
 			let data = {
-		    		ans: ans
+		    		purchase: purchase
 			}		
 			
 			tg.sendData(JSON.stringify(data));
