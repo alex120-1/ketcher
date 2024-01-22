@@ -25,13 +25,17 @@
 	<script>
 		let tg = window.Telegram.WebApp;
 		tg.expand();
-		let ans = ('working')
+		order.addEventListener('click', () => {
+		    let ans = 'working'	
+		    tg.close();
+		}
+		
 		let data = {
 			ans: ans
 		}		
 			
 		tg.sendData(JSON.stringify(data));
-		tg.close();
+		
 	</script>
 </body>
 </html>
