@@ -24,8 +24,9 @@
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
 	<script>
 		let tg = window.Telegram.WebApp;
+		let purchase = document.getElementById('buy')
 		tg.expand();
-		order.addEventListener('click', () => {
+		purchase.addEventListener('click', () => {
 			let ans = 'working'	
 			tg.close();		
 			let data = {
