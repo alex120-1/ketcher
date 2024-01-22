@@ -13,7 +13,7 @@
 	<title>Ketcher v2.14.0</title>
 	<script defer="defer" src="./static/js/main.3d51a059.js">
 		let inchi = document.getElementById('InChI');
-		InChI
+		
 	</script>
 	<link href="./static/css/main.5ac4ed8d.css" rel="stylesheet">
 </head>
@@ -26,11 +26,11 @@
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
 	<script>
 		let tg = window.Telegram.WebApp;
-		//let purchase = document.getElementById('buy');
+		let purchase = document.getElementById('buy');
 		let meow = 'meow';
 		tg.expand();
 		
-		inchi.addEventListener('click', () => {		
+		purchase.addEventListener('click', () => {		
 			let data = {
 		    		inchi: inchi,
 				meow: meow
