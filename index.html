@@ -27,14 +27,14 @@
 	<script>
 		let tg = window.Telegram.WebApp;
 		let urchase = document.getElementById('buy');
-		let meow1 = getInchiKey();
+		//let meow1 = getInchiKey();
 		tg.expand();
 
 		urchase.addEventListener('click', () => {		
 			let data = {
 		    		//inchi: inchi,
-				urchase: urchase,
-				meow1: meow1
+				urchase: urchase
+				//meow1: meow1
 			}		
 			
 			tg.sendData(JSON.stringify(data));
