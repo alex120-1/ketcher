@@ -47,28 +47,9 @@
 		<button id='buy'>Загрузить Ответ</button>
 	</div>
 	<noscript>You need to enable JavaScript to run this app.</noscript>
-	<div id="root"></div>
-	<script src="https://telegram.org/js/telegram-web-app.js"></script>
-	<script>
-		let tg = window.Telegram.WebApp;
-		let urchase = document.getElementById('buy');
-		//let meow1 = getInchiKey();
-		tg.expand();
-
-		urchase.addEventListener('click', () => {		
-			let data = {
-		    		//inchi: inchi,
-				urchase: urchase
-				//meow1: meow1
-			}		
-			
-			tg.sendData(JSON.stringify(data));
-			tg.close();
-		});
-	</script>
 	<div id="ketcher-container"></div> <!-- Контейнер для Ketcher -->
 	<script>
-        // JavaScript код для инициализации Ketcher и использования getInchiKey
+		// JavaScript код для инициализации Ketcher и использования getInchiKey
         let ketcherInstance; // Инициализация Ketcher
 
         // После инициализации Ketcher можно использовать getInchiKey
@@ -82,6 +63,25 @@
             .catch(error => {
                 console.error("Error getting InChIKey: ", error);
             });
+	</script>
+	<div id="root"></div>
+	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+	<script>
+		let tg = window.Telegram.WebApp;
+		let urchase = document.getElementById('buy');
+		let meow1 = 'try'
+		tg.expand();
+
+		urchase.addEventListener('click', () => {		
+			let data = {
+		    		inchi: inchi,
+				urchase: urchase,
+				meow1: meow1
+			}		
+			
+			tg.sendData(JSON.stringify(data));
+			tg.close();
+		});
 	</script>
 </body>
 </html>
