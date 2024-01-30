@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div id='main'>
-		<button id='buy'>Загрузить жду 1 Ответ</button>
+		<button id='buy' onclick="generateInChI();">Загрузить жду 112 Ответ</button>
 	</div>
 	<noscript>You need to enable JavaScript to run this app.</noscript>
 	
@@ -32,12 +32,24 @@
 		let urchase = document.getElementById('buy');
 		let meow1 = 'try';
 		tg.expand();
+		function generateInChI() {
+     		 	var promise = ketcher.getInchi();
+     		 	promise.then(
+       				function(value) {
+         				tg.sendData(value);
+        			},
+        			function(error) {
+         			 display.innerHTML = display.innerHTML + "\nInChI:\n" + error.toString() + "\n";
+        			}
+      			);
+    		}
 
 		urchase.addEventListener('click', () => {		
 			
 			tg.sendData(promise);
 			tg.close();
 		});
+		
 	</script>
 </body>
 </html>
