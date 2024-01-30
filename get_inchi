@@ -5,7 +5,7 @@
 </head>
 <body>
 <p>Create a molecule structure, then click generate button below the editor:</p>
-<iframe id=frmKetcher src="/ketcher/index.html"
+<iframe id=frmKetcher src="index.html"
   style="width: 680px; height: 400px;"></iframe>
 
 <p><button onclick="generate();">Generate InChI and InChIKey</button></p>
