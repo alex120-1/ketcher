@@ -1,0 +1,51 @@
+<html>
+<!-- generate-molecule-InChI-InChIKey.html Copyright (c) FYIcenter.com. -->
+<head>
+<title>Generate Molecule InChI and InChIKey</title>
+</head>
+<body>
+<p>Create a molecule structure, then click generate button below the editor:</p>
+<iframe id=frmKetcher src="/ketcher/index.html"
+  style="width: 680px; height: 400px;"></iframe>
+
+<p><button onclick="generate();">Generate InChI and InChIKey</button></p>
+<p>Output:</p>
+<pre id=output style="background-color: #ddd;"></pre>
+<script>
+  var ketcher = null;
+  var display = document.getElementById("output");
+
+function generate() {
+  frm = document.getElementById("frmKetcher");
+  ketcher = frm.contentWindow.ketcher;
+  display.innerHTML = "";
+  generateInChI();
+  generateInChIKey();
+}
+
+function generateInChI() {
+  let promise = ketcher.getInchi();
+  promise.then(
+    function(value) {
+      display.innerHTML = display.innerHTML+"\nInChI:\n"+value+"\n";
+    },
+    function(error) {
+      display.innerHTML = display.innerHTML+"\nInChI:\n"+error.toString()+"\n";
+    }
+  );
+}
+
+function generateInChIKey() {
+  let promise = ketcher.generateInchIKey();
+  promise.then(
+    function(value) {
+      display.innerHTML = display.innerHTML+"\nInChIKey:\n"+value+"\n";
+    },
+    function(error) {
+      display.innerHTML = display.innerHTML+"\nInChIKey:\n"+error.toString()+"\n";
+    }
+  );
+}
+</script>
+</body>
+</html>
