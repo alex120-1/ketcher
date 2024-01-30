@@ -27,10 +27,9 @@
 	<div id="root"></div>
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
 	<script>
-		var promise = ketcher.getInchi();
 		let tg = window.Telegram.WebApp;
-		let urchase = document.getElementById('buy');
-		let meow1 = 'try';
+		//let urchase = document.getElementById('buy');
+		//let meow1 = 'try';
 		tg.expand();
 		function generateInChI() {
      		 	var promise = ketcher.getInchi();
@@ -44,11 +43,11 @@
       			);
     		}
 
-		urchase.addEventListener('click', () => {		
-			
-			tg.sendData(promise);
-			tg.close();
-		});
+		//urchase.addEventListener('click', () => {		
+		//	
+		//	tg.sendData(promise);
+		//	tg.close();
+		//});
 		
 	</script>
 </body>
