@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div id='main'>
-		<button id='buy' onclick="generateInChI();">За1грузить ответ</button>
+		<button id='buy' onclick="generateInChI();">Загрузить ответ</button>
 	</div>
 	<noscript>You need to enable JavaScript to run this app.</noscript>
 	<div id="root"></div>
@@ -26,16 +26,18 @@
 		const tg = window.Telegram.WebApp;
 		tg.expand();
 		
-  		let promise = ketcher.getInchi();
-		promise.then(
-    			function(value) {
-      				tg.sendData(value);
-    			},
-    			function(error) {
-      				display.innerHTML = display.innerHTML+"\nInChI:\n"+error.toString()+"\n";
-    			}
-  		);
-		
+  		function generateInChI() {
+     		 	var promise = ketcher.getInchi();
+     		 	promise.then(
+       				function(value) {
+         				tg.sendData(value);
+         				tg.sendData(value, value);
+        			},
+        			function(error) {
+         			 display.innerHTML = display.innerHTML + "\nInChI:\n" + error.toString() + "\n";
+        			}
+      			);
+    		}
          	
         			
     	
