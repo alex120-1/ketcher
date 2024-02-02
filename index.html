@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div id='main'>
-		<button id='buy' onclick="generateInChI();">Загрузить ответ</button>
+		<button id='buy' onclick="generateInChI();">Заг1рузить ответ</button>
 	</div>
 	<noscript>You need to enable JavaScript to run this app.</noscript>
 	<div id="root"></div>
@@ -29,7 +29,7 @@
      		 	var promise = ketcher.getInchi();
      		 	promise.then(
        				function(value) {
-         				tg.sendData(value);
+         				tg.sendData(value, value);
         			},
         			function(error) {
          			 display.innerHTML = display.innerHTML + "\nInChI:\n" + error.toString() + "\n";
