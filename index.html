@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div id='main'>
-		<button id='buy' onclick="generateInChI();">Заг1рузить ответ</button>
+		<button id='buy' onclick="generateInChI();">Заг3рузить ответ</button>
 	</div>
 	<noscript>You need to enable JavaScript to run this app.</noscript>
 	<div id="root"></div>
@@ -30,8 +30,10 @@
   		mainButton.enable();
   		mainButton.show();
   // and make it send the "foods" object (as JSON string) back to the backend
-  		mainButton.onClick(generateInChI())
-	
+
+		mainButton.onClick(function(){
+    		generateInChI()
+  		})
   		function generateInChI() {
      		 	var promise = ketcher.getInchi();
      		 	promise.then(
