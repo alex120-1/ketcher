@@ -1,61 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta content="width=device-width,initial-scale=1" name="viewport">
-	<meta content="#000000" name="theme-color">
-	<meta content="Ketcher is a web-based chemical structure editor" name="description">
-	<link href="./favicon.ico" rel="shortcut icon" type="image/x-icon">
-	<link href="./favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
-	<link href="./favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
-	<link href="./apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
-	<link href="./manifest.json" rel="manifest">
-	<title>Ketcher v2.14.0</title>
-	<script defer="defer" src="./static/js/main.3d51a059.js">		
-	</script>
-	<link href="./static/css/main.5ac4ed8d.css" rel="stylesheet" draggable="false">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="#000000" name="theme-color">
+    <meta content="Ketcher is a web-based chemical structure editor" name="description">
+    <link href="./favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="./favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+    <link href="./favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
+    <link href="./apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+    <link href="./manifest.json" rel="manifest">
+    <title>Ketcher v2.14.0</title>
+    <script defer="defer" src="./static/js/main.3d51a059.js">		
+    </script>
+    <link href="./static/css/main.5ac4ed8d.css" rel="stylesheet" draggable="false">
 </head>
 <body>
-	<noscript>You need to enable JavaScript to run this app.</noscript>
-	<div id="root"></div>
-	<script src="https://telegram.org/js/telegram-web-app.js"></script>
-	<script>
-		public static void hideKeyboard(Activity activity) {
-             		View view = activity.findViewById(android.R.id.content);
-    			if (view != null) {
-        			InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-        			imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    			}
-		}
-		const tg = window.Telegram.WebApp;
-		tg.expand();
-		const mainButton = window.Telegram.WebApp.MainButton;
- 		mainButton.text = "Загруз1ить ответ";
-		mainButton.textColor = "#fd9617"; //изменяем цвет текста кнопки
-                mainButton.color = "#000000"; //изменяем цвет бэкграунда кнопки
-  		mainButton.enable();
-  		mainButton.show();
-		mainButton.onClick(function(){
-    		generateInChI()
-  		})
-		
-  		function generateInChI() {
-     		 	var promise = ketcher.getInchi();
-     		 	promise.then(
-       				function(value) {
-         				tg.sendData(value);
-         				tg.sendData(value, value);
-        			},
-        			function(error) {
-         			 display.innerHTML = display.innerHTML + "\nInChI:\n" + error.toString() + "\n";
-        			}
-      			);
-    		}
-         	
-        			
-    	
-	</script>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+        const mainButton = tg.MainButton;
+        mainButton.text = "Загрузить ответ";
+        mainButton.textColor = "#fd9617";
+        mainButton.color = "#000000";
+        mainButton.enable();
+        mainButton.show();
+        
+        mainButton.onClick(function(){
+            generateInChI();
+        });
+        
+        function generateInChI() {
+            if (typeof ketcher !== 'undefined') {
+                ketcher.getInchi().then(
+                    function(value) {
+                        tg.sendData(value);
+                    },
+                    function(error) {
+                        console.error("InChI error:", error);
+                    }
+                );
+            } else {
+                console.error("Ketcher is not initialized");
+            }
+        }
+    </script>
 </body>
 </html>
-
-	
